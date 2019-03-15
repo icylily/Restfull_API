@@ -1,13 +1,9 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-
+const express = require('express');
+const bodyParser = require('body-parser');
+const port = 7000;
+const app = express();
 
 app.use(bodyParser.json());
 app.use(express.static( __dirname + '/public/dist/public' ));
-
+app.listen(port, () => console.log("listening on port " + port));
 require('./backend/config/routes')(app);
-const port = 7000;
-app.listen(port, function () {
-    console.log("listening on port" + port);
-});
